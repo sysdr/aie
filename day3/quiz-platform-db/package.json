@@ -1,0 +1,19 @@
+{
+  "name": "quiz-platform-db",
+  "version": "1.0.0",
+  "description": "Quiz Platform Database Schema Implementation",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "node tests/schema-test.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0",
+    "bcryptjs": "^2.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
