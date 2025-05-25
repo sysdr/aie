@@ -1,0 +1,23 @@
+{
+  "name": "results-service",
+  "version": "1.0.0", 
+  "description": "Quiz results processing and leaderboard service",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js", 
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0", 
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": ["microservices", "results", "leaderboard", "scoring"],
+  "author": "Your Name", 
+  "license": "MIT"
+}

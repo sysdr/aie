@@ -1,0 +1,40 @@
+{
+  "name": "ai-quiz-platform",
+  "version": "0.1.0",
+  "description": "AI-powered quiz platform built over 180 days",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "build": "echo 'Build process will be implemented as we progress'"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.47.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
+  },
+  "keywords": [
+    "ai",
+    "quiz",
+    "education",
+    "backend",
+    "learning"
+  ],
+  "author": "AI Engineering Student",
+  "license": "MIT"
+}

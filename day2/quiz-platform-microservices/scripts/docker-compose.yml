@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  user-service:
+    build:
+      context: ./services/user-service
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+    networks:
+      - quiz-network
+    restart: unless-stopped
+
+  quiz-service:
+    build:
+      context: ./services/quiz-service
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3002"
+    environment:
+      - NODE_ENV=development
+      - PORT=3002
+    networks:
+      - quiz-network
+    restart: unless-stopped
+
+  results-service:
+    build:
+      context: ./services/results-service
+      dockerfile: Dockerfile
+    ports:
+      - "3003:3003"
+    environment:
+      - NODE_ENV=development
+      - PORT=3003
+    networks:
+      - quiz-network
+    restart: unless-stopped
+
+networks:
+  quiz-network:
+    driver: bridge
