@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Quiz Platform - Authentication</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 AI Quiz Platform</h1>
+            <p>Secure Authentication Service</p>
+        </header>
+
+        <div class="auth-container">
+            <!-- Registration Form -->
+            <div id="register-form" class="form-container">
+                <h2>Create Account</h2>
+                <form id="registerForm">
+                    <div class="input-group">
+                        <label for="reg-username">Username</label>
+                        <input type="text" id="reg-username" name="username" required minlength="3">
+                    </div>
+                    <div class="input-group">
+                        <label for="reg-email">Email</label>
+                        <input type="email" id="reg-email" name="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="reg-fullname">Full Name</label>
+                        <input type="text" id="reg-fullname" name="full_name">
+                    </div>
+                    <div class="input-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" name="password" required minlength="8">
+                        <small>Must contain uppercase, lowercase, number, and special character</small>
+                    </div>
+                    <button type="submit" class="btn-primary">Register</button>
+                </form>
+                <p class="form-switch">Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-form" class="form-container" style="display: none;">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="login-username">Username</label>
+                        <input type="text" id="login-username" name="username" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                </form>
+                <p class="form-switch">Need an account? <a href="#" onclick="showRegister()">Register here</a></p>
+            </div>
+
+            <!-- User Dashboard -->
+            <div id="user-dashboard" class="dashboard" style="display: none;">
+                <h2>Welcome, <span id="user-name"></span>!</h2>
+                <div class="user-info">
+                    <p><strong>Username:</strong> <span id="dashboard-username"></span></p>
+                    <p><strong>Email:</strong> <span id="dashboard-email"></span></p>
+                    <p><strong>Account Created:</strong> <span id="dashboard-created"></span></p>
+                    <p><strong>Last Login:</strong> <span id="dashboard-last-login"></span></p>
+                </div>
+                <div class="dashboard-actions">
+                    <button onclick="testAuthenticatedRequest()" class="btn-secondary">Test Protected Endpoint</button>
+                    <button onclick="logout()" class="btn-danger">Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Messages -->
+        <div id="message-container"></div>
+
+        <!-- System Status -->
+        <div class="system-status">
+            <h3>System Status</h3>
+            <div id="status-indicators">
+                <div class="status-item">
+                    <span class="status-label">Auth Service:</span>
+                    <span id="auth-status" class="status-indicator">Checking...</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Database:</span>
+                    <span id="db-status" class="status-indicator">Checking...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Documentation Link -->
+        <div class="api-docs">
+            <a href="/docs" target="_blank" class="btn-secondary">📚 API Documentation</a>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
