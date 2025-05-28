@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  quiz-api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://quiz_user:quiz_pass@postgres:5432/quiz_db
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - .:/app
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: quiz_db
+      POSTGRES_USER: quiz_user
+      POSTGRES_PASSWORD: quiz_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+
+  postgres-test:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: quiz_test_db
+      POSTGRES_USER: quiz_user
+      POSTGRES_PASSWORD: quiz_pass
+    ports:
+      - "5433:5432"
+    profiles:
+      - testing
+
+volumes:
+  postgres_data:
+  redis_data:
