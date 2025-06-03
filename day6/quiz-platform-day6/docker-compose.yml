@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  quiz-service:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+    volumes:
+      - ./src:/app/src
+    command: python src/main.py
+
+  test-runner:
+    build: .
+    environment:
+      - PYTHONPATH=/app
+    volumes:
+      - ./src:/app/src
+    command: python -m pytest src/tests/ -v
+    depends_on:
+      - quiz-service
+    profiles:
+      - test
